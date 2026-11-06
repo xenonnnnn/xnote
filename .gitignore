@@ -1,8 +1,41 @@
+# Dependencies and local caches
 node_modules/
-dist/
-dist-electron/
-release/
-playwright-report/
-test-results/
-.DS_Store
+.npm/
+.cache/
+.vite/
+*.tsbuildinfo
+
+# Generated bundles and installers (build/ contains required app icons)
+/dist/
+/dist-electron/
+/release/
+
+# Test output
+/coverage/
+/playwright-report/
+/test-results/
+/blob-report/
+
+# Local environment variables; keep shareable templates
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Logs and temporary files
 *.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# Local editor settings
+.idea/
+.vscode/
+
+# OS metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,65 @@
+.template-center {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 var(--document-gutter) 48px;
+}
+.template-header,
+.template-items {
+  max-width: 760px;
+  margin-inline: auto;
+}
+.template-header {
+  margin-bottom: 36px;
+}
+.template-header h1 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: var(--content-heading-height);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+.template-header p,
+.template-description p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.template-item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 12px;
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+}
+.template-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.template-icon {
+  align-self: start;
+  margin-top: 3px;
+  color: var(--muted);
+}
+.template-description h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.template-item .secondary-button {
+  font-size: 14px;
+  font-weight: 400;
+}
+@container document (max-width: 520px) {
+  .template-item {
+    grid-template-columns: 20px minmax(0, 1fr);
+    padding-block: 22px;
+  }
+  .template-item .secondary-button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

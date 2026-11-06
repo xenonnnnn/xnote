@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+  <linearGradient id="lake-blue" x1="16" y1="14" x2="46" y2="51" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#A3D5F5"/>
+  <stop offset=".5" stop-color="#88C3EA"/>
+  <stop offset="1" stop-color="#7AB3E0"/>
+  </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#fff"/>
+  <g transform="translate(32 32) scale(.96) translate(-34 -32)">
+  <g transform="rotate(-6 30.5 32)">
+  <rect x="17" y="14.5" width="28" height="36.5" rx="5.5" fill="url(#lake-blue)" stroke="#75ADDA" stroke-width=".65"/>
+  <path d="M23 20v24" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/>
+  <path d="M28.5 24.5h9" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M26.5 33c1.9 2.6 5 2.8 7.2.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(32 43 30)">
+  <path d="M39.8 18.5a3.2 3.2 0 0 1 6.4 0v17.2c0 .6-.1 1.1-.4 1.7l-2 4.6a.9.9 0 0 1-1.6 0l-2-4.6a4 4 0 0 1-.4-1.7Z" fill="url(#lake-blue)" stroke="#fff" stroke-width="3" stroke-linejoin="round" paint-order="stroke fill"/>
+  <path d="M39.8 18.5a3.2 3.2 0 0 1 6.4 0v17.2c0 .6-.1 1.1-.4 1.7l-2 4.6a.9.9 0 0 1-1.6 0l-2-4.6a4 4 0 0 1-.4-1.7Z" fill="none" stroke="#75ADDA" stroke-width=".55" stroke-linejoin="round"/>
+  </g>
+  </g>
+</svg>

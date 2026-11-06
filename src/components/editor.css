@@ -1,0 +1,386 @@
+.note-editor {
+  --editor-text: #606266;
+  --editor-font:
+    -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  container: note-editor / inline-size;
+}
+:root[data-theme="dark"] .note-editor {
+  --editor-text: var(--text);
+}
+.popover.editor-context-menu {
+  position: fixed;
+  width: 200px;
+  z-index: 70;
+  max-height: calc(100dvh - 16px);
+  overflow-y: auto;
+}
+.popover.editor-context-menu button {
+  height: 32px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+.editor-context-menu button:hover,
+.editor-context-menu button:focus-visible {
+  background: var(--color-hover);
+}
+.editor-context-menu button.active {
+  background: var(--color-active);
+}
+.note-editor .editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 0 16px;
+  color: var(--muted);
+  opacity: 1;
+}
+.note-editor .editor-formats,
+.note-editor .editor-mode-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.note-editor .editor-formats {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.note-editor .editor-mode-switch {
+  margin-left: auto;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.note-editor .editor-formats button,
+.note-editor .editor-mode-switch button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius, 5px);
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+.note-editor .editor-formats button:hover,
+.note-editor .editor-mode-switch button:hover {
+  color: var(--text);
+  background: var(--color-button-hover);
+}
+.note-editor .editor-formats button:disabled {
+  opacity: var(--control-disabled-opacity);
+  cursor: default;
+  background: transparent;
+}
+.note-editor .editor-mode-switch button:disabled {
+  opacity: var(--control-disabled-opacity);
+  cursor: default;
+  background: transparent;
+}
+.note-editor .editor-formats button:focus-visible,
+.note-editor .editor-mode-switch button:focus-visible {
+  outline: 1.5px solid var(--focus);
+  outline-offset: 2px;
+}
+.note-editor .editor-mode-switch button {
+  width: auto;
+  min-width: 28px;
+  gap: 5px;
+  padding: 0 6px;
+  font-size: var(--font-caption);
+}
+.note-editor .editor-formats button[aria-pressed="true"],
+.note-editor .editor-mode-switch button[aria-pressed="true"] {
+  background: var(--nav-selected);
+  color: var(--color-control-active);
+}
+.note-editor .editor-mode-switch .editor-source-toggle {
+  margin-right: 0;
+}
+.note-editor .editor-mode-switch .editor-source-toggle[aria-pressed="true"] {
+  color: var(--color-control-active);
+}
+.note-editor .editor-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-top: 0;
+  scrollbar-gutter: stable;
+}
+.note-editor .editor-body.is-split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+}
+.note-editor .editor-code {
+  min-width: 0;
+}
+.note-editor .editor-code.is-hidden {
+  display: none;
+}
+.note-editor .editor-body.is-split .editor-code {
+  padding-right: 26px;
+  border-right: 1px solid var(--border);
+}
+.note-editor .cm-editor {
+  min-height: 100%;
+  color: var(--editor-text);
+  background: transparent;
+  font-synthesis: style;
+}
+.note-editor .cm-editor.cm-focused {
+  outline: none;
+}
+.note-editor .cm-scroller {
+  overflow: visible;
+  font-family: var(--editor-font);
+  line-height: 1.7;
+}
+.note-editor .cm-editor .cm-content {
+  padding: 0 0 64px;
+  caret-color: var(--caret);
+}
+.note-editor .cm-line {
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+.note-editor .cm-content::selection,
+.note-editor .cm-content ::selection,
+.markdown-preview ::selection {
+  background: var(--text-selection);
+}
+.note-editor .cm-content:not(:focus)::selection,
+.note-editor .cm-content:not(:focus) ::selection {
+  background: var(--text-selection-inactive);
+}
+/* Preserve source geometry on pointer/selection updates, including during IME input. */
+.note-editor .cm-md-hidden-marker {
+  opacity: 0;
+}
+.note-editor .cm-activeLine {
+  background: transparent;
+}
+.note-editor .cm-placeholder {
+  color: var(--subtle, var(--muted));
+}
+.note-editor .cm-panels {
+  background: var(--panel);
+  color: var(--text);
+  border-color: var(--border);
+}
+.note-editor .cm-search {
+  font-family: var(--font-ui, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: var(--font-caption);
+}
+/* Inactive lines read as formatted prose; active lines expose their Markdown source. */
+.note-editor .cm-md-heading {
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: 0;
+  padding-top: 0.4em;
+  padding-bottom: 0.2em;
+  font-size: inherit;
+}
+.note-editor .cm-md-h1 {
+  font-weight: 700;
+}
+.note-editor .cm-md-h2 {
+  font-weight: 650;
+}
+.note-editor .cm-md-h6 {
+  color: var(--muted);
+}
+.note-editor .cm-md-quote {
+  border-left: 2px solid var(--border);
+  padding-left: 18px;
+  color: var(--color-content-muted);
+}
+.note-editor .cm-md-code-block {
+  background: var(--surface);
+  padding-left: 16px;
+  padding-right: 16px;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: inherit;
+}
+.note-editor .cm-md-code-fence {
+  color: var(--muted);
+}
+.markdown-preview {
+  min-width: 0;
+  color: var(--editor-text);
+  font-family: var(--editor-font);
+  font-synthesis: style;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  padding-bottom: 64px;
+}
+.markdown-preview > :first-child {
+  margin-top: 0;
+}
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  color: var(--editor-text);
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1.7;
+  margin: 1.55em 0 0.6em;
+  letter-spacing: -0.02em;
+}
+.markdown-preview h1 {
+  font-weight: 700;
+}
+.markdown-preview h2 {
+  font-weight: 650;
+}
+.markdown-preview h6 {
+  color: var(--muted);
+}
+.markdown-preview p {
+  margin: 0;
+}
+.markdown-preview a {
+  color: var(--color-content-link);
+  text-decoration-color: var(--muted);
+  text-underline-offset: 3px;
+}
+.markdown-preview a:hover {
+  text-decoration-color: var(--color-content-link);
+}
+.markdown-preview blockquote {
+  margin: 1.4em 0;
+  padding: 0 0 0 18px;
+  border-left: 2px solid var(--border);
+  color: var(--color-content-muted);
+}
+.markdown-preview blockquote > :last-child {
+  margin-bottom: 0;
+}
+.markdown-preview code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: inherit;
+  background: var(--surface);
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+.markdown-preview pre {
+  margin: 6px 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--surface);
+  line-height: 1.6;
+}
+.markdown-preview pre code {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+.markdown-preview ul,
+.markdown-preview ol {
+  padding-left: 1.5em;
+}
+.markdown-preview li {
+  margin: 0.3em 0;
+}
+.markdown-preview hr {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 2em 0;
+}
+.markdown-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+.markdown-preview .unavailable-image {
+  display: inline-block;
+  padding: 8px 0;
+  color: var(--muted);
+  font-size: var(--font-caption);
+}
+.markdown-preview .unavailable-image > span {
+  display: block;
+}
+.markdown-preview .preview-image-alt {
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.markdown-preview table {
+  display: block;
+  overflow: auto;
+  border-collapse: collapse;
+  margin: 1.4em 0;
+  max-width: 100%;
+  width: max-content;
+  font-size: inherit;
+}
+.markdown-preview th,
+.markdown-preview td {
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  padding: 9px 14px 9px 0;
+}
+.markdown-preview th {
+  font-weight: 600;
+  border-bottom-color: var(--muted);
+}
+.markdown-preview .task-list-item {
+  list-style: none;
+}
+.markdown-preview input[type="checkbox"] {
+  accent-color: var(--muted);
+  margin-right: 6px;
+}
+.preview-empty {
+  color: var(--muted);
+}
+@container note-editor (max-width: 540px) {
+  .note-editor .editor-mode-label {
+    display: none;
+  }
+  .note-editor .editor-formats button {
+    width: 26px;
+  }
+  .note-editor .editor-mode-switch button {
+    padding: 0 4px;
+  }
+}
+@container note-editor (max-width: 620px) {
+  .note-editor .editor-body.is-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .note-editor .editor-body.is-split .editor-code {
+    padding-right: 0;
+    border-right: 0;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+@media (hover: none) {
+  .note-editor .editor-toolbar {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .note-editor .editor-toolbar {
+    transition: none;
+  }
+}

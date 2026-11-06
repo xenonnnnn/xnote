@@ -1,0 +1,115 @@
+/* Neutral UI tokens. Content semantics have their own tokens below. */
+:root {
+  --font-ui:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Segoe UI",
+    sans-serif;
+  --color-background: #ffffff;
+  --color-sidebar: #f9f9f9;
+  --color-surface: #f5f5f5;
+  --color-text-primary: #303133;
+  --color-text-secondary: #606266;
+  --color-text-muted: #909399;
+  --color-text-subtle: #b0b0b0;
+  --color-border: #eaeaea;
+  --color-hover: #f5f5f5;
+  --color-button-hover: var(--color-hover);
+  --color-active: #eeeeee;
+  --color-control-active: var(--color-text-primary);
+  --color-focus: #999999;
+  --color-caret: #4a4a4a;
+  --color-text-selection: #dedede;
+  --color-text-selection-inactive: #eeeeee;
+  --color-primary-button: #303133;
+  --color-primary-button-hover: var(--color-hover);
+  --color-primary-button-text: #ffffff;
+  --color-switch-thumb: #ffffff;
+  --color-scrim: #00000026;
+  --color-scrollbar: #b0b0b040;
+  --color-scrollbar-hover: #99999980;
+  --color-content-link: #b77b4f;
+  --color-content-muted: #858585;
+
+  --font-size-primary: 16px;
+  --font-size-secondary: 14px;
+  --font-size-caption: 12px;
+  --icon-primary: 16px;
+  --icon-regular: 14px;
+  --icon-small: 12px;
+  --icon-brand: 22px;
+  --icon-stroke: 1.6;
+  --brand-gap: 8px;
+  --navigation-gap: 2px;
+  --navigation-height: 36px;
+  --control-disabled-opacity: 0.45;
+  --radius: 5px;
+  --radius-overlay: 8px;
+  --shadow: 0 4px 18px #0000000d, 0 1px 3px #00000008;
+  --shadow-modal: 0 12px 40px #0000001a;
+  --content-width: 800px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --list-inset: 20px;
+  --duration: 140ms;
+
+  /* Shared aliases preserve the established component styling contract. */
+  --bg: var(--color-background);
+  --panel: var(--color-background);
+  --sidebar: var(--color-sidebar);
+  --surface: var(--color-surface);
+  --input: var(--color-background);
+  --text: var(--color-text-primary);
+  --muted: var(--color-text-secondary);
+  --subtle: var(--color-text-muted);
+  --border: var(--color-border);
+  --accent: var(--color-control-active);
+  --hover: var(--color-hover);
+  --selected: var(--color-active);
+  --selection: var(--color-active);
+  --danger: var(--color-text-primary);
+  --warning-bg: var(--color-surface);
+  --warning-text: var(--color-text-secondary);
+  --focus: var(--color-focus);
+  --font-small: var(--font-size-caption);
+  --font-caption: var(--font-size-caption);
+  --font-control: var(--font-size-secondary);
+  --font-title: var(--font-size-secondary);
+  --font-body: var(--font-size-primary);
+  --nav-selected: var(--color-active);
+  --nav-hover: var(--color-hover);
+  --caret: var(--color-caret);
+  --text-selection: var(--color-text-selection);
+  --text-selection-inactive: var(--color-text-selection-inactive);
+  --saved: var(--color-text-secondary);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --color-background: #202020;
+  --color-sidebar: #252525;
+  --color-surface: #2b2b2b;
+  --color-text-primary: #e3e3e3;
+  --color-text-secondary: #b0b0b0;
+  --color-text-muted: #888888;
+  --color-text-subtle: #707070;
+  --color-border: #363636;
+  --color-hover: #2c2c2c;
+  --color-active: #383838;
+  --color-focus: #999999;
+  --color-caret: #d0d0d0;
+  --color-text-selection: #505050;
+  --color-text-selection-inactive: #3c3c3c;
+  --color-primary-button: #e3e3e3;
+  --color-primary-button-text: #202020;
+  --color-switch-thumb: #202020;
+  --color-scrollbar: #88888840;
+  --color-scrollbar-hover: #99999980;
+  --color-content-link: #c89c77;
+  --color-content-muted: #a0a09c;
+  --shadow: 0 4px 18px #00000026, 0 1px 3px #00000014;
+  --shadow-modal: 0 12px 40px #00000040;
+  color-scheme: dark;
+}
